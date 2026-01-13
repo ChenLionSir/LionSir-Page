@@ -1,0 +1,62 @@
+2025-12-17
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: white;
+      /*背景颜色默认是白色*/
+      color: black;
+      /*文字颜色*/
+      transition: 2s;
+      /*加一个0.5秒动画，让变色丝滑一点*/
+      padding: 50px;
+    }
+
+    .dark-mode {
+      background-color: #333;
+      /*背景为深灰色*/
+      color: white;
+      /*文字颜色为白色*/
+    }
+  </style>
+</head>
+
+<body>
+  <h1>早上好</h1>
+  <button id="btn">🌙关灯</button>
+  <!-- /*今天挑战给内容添加一个脑子*/ -->
+  <script>
+    const body = document.querySelector('body');
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', function () {
+      //核心知识点🦁：classList.toggle
+      //这句代码的意思是：
+      //‘看看body身上有没有dark-mode’这个衣服
+      //如果没有就穿上，如果有就脱下来。
+      body.classList.toggle('dark-mode');
+      //-----进阶一下：改按钮文字（逻辑判断）----
+      //if body 穿着 dark-mode的衣服
+      if (body.classList.contains('dark-mode')) {
+        btn.innerText = '🌞开灯';//按钮文字变成开灯
+      } else {
+        btn.innerText = '🌙关灯';//按钮文字变成关灯
+      }
+      const h1 = document.querySelector('h1')
+      if (body.classList.contains('dark-mode')) {
+        h1.innerText = '晚上好🌙'
+      }
+      else {
+        h1.innerText = '早上好🌞'
+      }
+    }
+    )
+
+  </script>
+</body>
+
+</html>

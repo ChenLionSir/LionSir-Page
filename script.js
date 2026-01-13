@@ -44,3 +44,55 @@ toggleBtn.addEventListener("click", function () {
   // (选做) 可以在控制台看看有没有成功
   console.log("切换模式啦！");
 });
+// DAY12弹窗逻辑
+// 1.获取三个关键元素
+var modal = document.getElementById('my-modal');
+var btn = document.getElementById('contact-btn');
+var closeSpan = document.querySelector('.close-btn');//找那个叉叉
+// 2.点击按钮-》打开弹窗
+btn.addEventListener('click', function () {
+  modal.style.display = 'flex';//把display：none改成flex，它就出来了！
+});
+// 3.点击叉叉-》关闭弹窗
+closeSpan.addEventListener('click', function () {
+  modal.style.display = 'none';//把display：flex改成none，它就隐藏起来了！
+});
+//4.高级功能！  点击黑色背景也要关闭弹窗
+window.addEventListener('click', function (event) {
+  //如果点击的是弹窗本身（而不是里面的叉叉）
+  if (event.target == modal) {
+    modal.style.display = 'none';//就关闭弹窗
+  }
+
+})
+var images = ['p1.png', 'p2.png', 'p3.png'];
+var currentIndex = 0;
+var imgElement = document.getElementById('magic-image');
+var prevBtn = document.getElementById('prev-btn');
+var nextBtn = document.getElementById('next-btn');
+nextBtn.addEventListener('click', function () {
+  currentIndex = currentIndex + 1;
+  if (currentIndex >= images.length) {
+    currentIndex = 0;
+  }
+  imgElement.src = images[currentIndex];
+  console.log(currentIndex);
+})
+// --- 给“上一张”按钮装脑子 ---
+prevBtn.addEventListener("click", function () {
+
+  // 1. 编号减 1 (倒退)
+  currentIndex = currentIndex - 1;
+
+  // 2. 【关键逻辑】如果减过头了 (变成 -1 了)
+  if (currentIndex < 0) {
+    // 就跳到最后一张 (数组长度减 1，也就是 3-1=2)
+    currentIndex = images.length - 1;
+  }
+
+  // 3. 更新图片 (跟下一张的逻辑一样)
+  imgElement.src = images[currentIndex];
+
+  // (可选) 打印看看
+  console.log("当前播放第：" + currentIndex + " 张");
+});

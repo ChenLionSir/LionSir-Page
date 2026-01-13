@@ -221,11 +221,34 @@ a:hover {
   max-width: 90%;
   margin-top: 50px;
   transition: transform 0.6s;
+  border-radius: 15px;
 }
 
 /*鼠标悬停时，让电脑浮起来一点点！*/
 .hero-img:hover {
   transform: translateY(-10px);
+}
+
+/* --- 图片的基础样式 (常态) --- */
+#magic-image {
+  /* ... 这里是你之前可能写过的 width 或 border-radius 等样式 ... */
+
+  /* 👇 【关键咒语 1】让变化变得顺滑 */
+  /* 意思就是：如果有任何变形(transform)发生，用 0.3 秒的时间过渡完成 */
+  transition: transform 0.3s ease;
+
+
+}
+
+/* --- 鼠标悬停时的样式 (变态) --- */
+/* :hover 表示“当鼠标放在上面时” */
+#magic-image:hover {
+  /* 👇 【关键咒语 2】向上位移 */
+  /* translate 是平移，Y 是纵向轴。负数表示向上。 */
+  /* -10px 就是向上移动 10 像素，你可以改这个数字来调整浮动高度 */
+  transform: translateY(-10px);
+
+
 }
 
 .skills {
@@ -379,4 +402,145 @@ footer a:hover {
 /* 当 body 是黑夜模式时，按钮的悬停背景变白一点点，不然看不见 */
 body.dark-mode #theme-toggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.action-btn {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+}
+
+.modal {
+  /* 默认它是隐藏的！js会把它变成flex */
+  display: none;
+  /* 让它浮在所有东西上面 */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  /* 铺满全屏 */
+  width: 100%;
+  height: 100%;
+  /* 半透明黑色背景（遮罩效果） */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 这是一个flex容器，为了让里面的白盒子居中 */
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* --- ⬜️ 弹窗里的白卡片 --- */
+.modal-content {
+  background-color: var(--card-bg);
+  /* 跟随黑白模式变色！ */
+  color: var(--text-color);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  /* 为了给关闭按钮定位用 */
+  width: 300px;
+  /* 卡片不要太宽 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  /* 加点阴影更立体 */
+
+  /* 加个简单的弹入动画 */
+  animation: modalPop 0.3s ease-out;
+}
+
+/* 定义弹入动画：从下往上冒出来 */
+@keyframes modalPop {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- ❌ 关闭按钮 --- */
+.close-btn {
+  position: absolute;
+  /* 绝对定位：相对于白盒子定位 */
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+/* --- 🖼️ 弹窗里的二维码图片 --- */
+.qr-code {
+  /* 关键 1：让它乖乖待在盒子里 */
+  width: 100%;
+  /* 宽度撑满父容器 (也就是那个300px的白盒子) */
+  max-width: 200px;
+  /* (可选) 如果觉得100%还是太大了，可以限制死一个最大宽度，比如200px */
+
+  /* 关键 2：保持身材比例 */
+  height: auto;
+  /* 高度自动计算，拒绝拉伸变形！ */
+
+  /* 美化一下 */
+  margin: 20px 0;
+  /* 上下留点空隙，别顶着文字 */
+  border-radius: 8px;
+  /* 给图片也加个小圆角，更精致 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* 加点微弱的阴影 */
+}
+
+/* 选中两个按钮 (用逗号隔开，意思是对它俩都生效) */
+#prev-btn,
+#next-btn {
+  /* --- 基础尺寸 --- */
+  width: 120px;
+  padding: 10px;
+  border-radius: 30px;
+  /* 圆角胶囊形状 */
+
+  /* --- 颜值提升 --- */
+  border: none;
+  /* 去掉那个丑丑的黑边框 */
+  background-color: #0071e3;
+  /* Apple 经典的科技蓝 */
+  color: white;
+  /* 文字变白 */
+  font-size: 16px;
+  font-weight: bold;
+
+  /* --- 交互体验 --- */
+  cursor: pointer;
+  /* 鼠标放上去变小手 */
+  transition: 0.3s;
+  /* 让变化有动画过渡 */
+  margin: 0 10px;
+  /* 让两个按钮中间有点空隙 */
+}
+
+/* 鼠标悬停时的效果 (Hover) */
+#prev-btn:hover,
+#next-btn:hover {
+  background-color: #005bb5;
+  /* 鼠标放上去变深一点 */
+  transform: scale(1.05);
+  /* 微微放大一点点 */
 }

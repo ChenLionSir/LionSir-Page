@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的梦想清单</title>
+    <style>
+        body{
+            background-color: #f0f2f5;
+            font-family:'微软雅黑',sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top:50px;
+        }
+        .card{
+            background-color: white;
+            width:380px;
+            padding:30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px  20px rgba(0, 0, 0, 0.5);
+        }
+        .product-img{
+            width: 80%;
+            border-radius: 10px;
+            margin :20px 0;
+        }
+        .highlight{
+            color:#ff4757;
+            font-weight:bold;
+            font-size:1.2em;
+        }
+        .btn{
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 15px;
+            transition:0.3s;
+        }
+        .btn:hover{
+            background-color: #0056b3;
+            transform:scale(1.05);
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>2027年愿望清单</h1>
+
+<img class="product-img" src="./html/macbook.png" alt="MacBook Pro">
+<div class="desc">
+我一定要买一台<span class="highlight" style="color: rgb(86, 92, 92);font-weight: bold;">MacBook Pro 2027 M7</span>用来生活和写代码
+</div>
+<div>
+<a href="https://www.bilibili.com/" target="_blank" class="btn">去B站 pink老师那里学习前端课程</a>
+</div>
+</div>
+<script>
+    const myButton =document.querySelector('.btn')
+    const myText = document.querySelector('.highlight');
+    myButton.addEventListener('click',function(){
+        myText.textContent="Macbook Pro M7(已加入购物车！)";
+        myText.style.color="#2ecc71";
+        myButton.textContent="准备吃土(　o=^•ェ•)o　┏━┓";
+        myButton.style.backgroundColor="#95a5a6";
+    });
+</script>
+</body>
+</html>
